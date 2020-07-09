@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = Recipe.all
+    ActiveRecord::Associations::Preloader.new.preload(@recipes, :ingredients)
   end
 
   # GET /recipes/1
